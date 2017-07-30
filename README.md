@@ -1,7 +1,7 @@
 # chrome-extension-skeleton
 
 ## 前后端通信
-```
+```js
 // 前端
 import { mainConnector, Storage } from './modules/utils'
 
