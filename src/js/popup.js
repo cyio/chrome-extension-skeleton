@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { mainConnector, Storage } from './modules/utils'
+import Hello from './hello.js'
 
 var port  = new mainConnector();
 port.name = "chrome-extension-skeleton";
@@ -26,7 +27,7 @@ var app = new Vue({
   render (h) { // <-- h must be in scope
     return (
       <div class='container'>
-        <h1>Hello Chrome</h1>
+        <Hello />
       </div>
     )
   }
