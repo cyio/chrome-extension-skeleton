@@ -38,13 +38,3 @@ Storage.getValue('ver');
 ## 与 Firefox 兼容
 
 * [Chrome incompatibilities - Mozilla | MDN](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Chrome_incompatibilities)
-* manfest.json 的设置页面写法
-```
-  "options_ui": {
-    "page": "options/options.html"
-  }
-```
-在 chrome 里是在扩展管理页弹窗，适合设置页面比较简单的情况
-另外有一些参数设置不要用，因为不兼容，无法载入
-[options_ui - Mozilla | MDN](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/options_ui)
-* 命名空间，Firefox 支持 `chrome` 和 `browser`

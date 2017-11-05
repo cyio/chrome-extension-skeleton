@@ -10,7 +10,9 @@
     "matches": [ "http://*/*", "https://*/*" ],
     "js": [ "js/content.js" ]
   }],
-  "options_page": "html/options.html",
+	"options_ui": {
+		"page": "html/options.html"
+	},
   "permissions": [
     "notifications",
     "cookies",
@@ -19,7 +21,7 @@
     "webRequestBlocking"
   ],
   "web_accessible_resources": [ "js/*", "html/*", "css/*", "images/*" ],
-  "name": "<%= package.name %>",
+  "name": "<%= package.extensionName %>",
   "version": "<%= package.version %>",
   "description": "<%= package.description %>"
 }

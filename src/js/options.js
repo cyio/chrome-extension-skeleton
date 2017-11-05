@@ -11,27 +11,34 @@ var app = new Vue({
 		statusText: ''
   },
   methods: {
-    saveOptions() {
-      chrome.storage.sync.set({
+    async saveOptions() {
+      Storage.setObject('setting', {
         favoriteColor: this.favoriteColor,
         likesColor: this.likesColor
-      }, async () => {
-        this.statusText = 'Options saved.';
-        await sleep(700)
-        this.statusText = ''
-        // setTimeout(() => {
-          // this.statusText = ''
-        // }, 750)
-      });
+      })
+      this.statusText = 'Options saved.';
+      await sleep(700)
+      this.statusText = ''
+      // chrome.storage.sync.set({       // only google chrome cloud sync
+        // favoriteColor: this.favoriteColor,
+        // likesColor: this.likesColor
+      // }, async () => {
+        // this.statusText = 'Options saved.';
+        // await sleep(700)
+        // this.statusText = ''
+      // });
     },
     restoreOptions() {
-      chrome.storage.sync.get({
-        favoriteColor: this.favoriteColor, // 设置默认值，不需要也可用数组
-        likesColor: this.likesColor
-      }, (items) => {
-        this.favoriteColor = items.favoriteColor;
-        this.likesColor = items.likesColor;
-      });
+      let setting = Storage.getObject('setting')
+      this.favoriteColor = setting.favoriteColor
+      this.likesColor = setting.likesColor 
+      // chrome.storage.sync.get({   // only google chrome
+        // favoriteColor: this.favoriteColor, // 设置默认值，不需要也可用数组
+        // likesColor: this.likesColor
+      // }, (items) => {
+        // this.favoriteColor = items.favoriteColor;
+        // this.likesColor = items.likesColor;
+      // });
     },
     onChange(name, e) {
 			this[name] = e.target.value

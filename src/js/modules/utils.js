@@ -16,7 +16,7 @@ export const backgroundConnector = function(){
 	this.init = function(fn){
 		var This = this;
 		//console.log(this);
-		chrome.extension.onConnect.addListener(function(port){
+		chrome.runtime.onConnect.addListener(function(port){
 			This.cache = port;
 			if(port.name==This.name){
 				port.onDisconnect.addListener(function(){
@@ -41,7 +41,7 @@ export const mainConnector = function(){
 	this.name=null;//connect name
 	//初始化
 	this.init=function(){
-		var port = chrome.extension.connect({name:this.name});
+		var port = chrome.runtime.connect({name:this.name});
 		this.cache = port;
 	};
 	//发送消息

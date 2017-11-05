@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const VersionFilePlugin = require('webpack-version-file-plugin');
 const CrxPlugin = require('crx-webpack-plugin');
+const ZipPlugin = require('zip-webpack-plugin')
 
 const config = require('./config.js');
 const pkg = require('../package.json');
@@ -29,12 +30,12 @@ module.exports = _.merge({}, config, {
       template: path.resolve(__dirname, '../src/manifest.json'),
       outputFile: path.resolve(__dirname, '../build/prod/manifest.json'),
     }),
-    new CrxPlugin({
-      keyFile: '../mykey.pem',
-      contentPath: '../build/prod',
-      outputPath: '../build',
-      name: appName
-    }),
+    // new CrxPlugin({
+      // keyFile: '../mykey.pem',
+      // contentPath: '../build/prod',
+      // outputPath: '../build',
+      // name: appName
+    // }),
     new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
@@ -49,5 +50,9 @@ module.exports = _.merge({}, config, {
         screw_ie8: true
       }
     }),
+    new ZipPlugin({
+      path: '../',
+      filename: appName
+    })
   ]
 });
